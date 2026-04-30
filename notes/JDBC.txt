@@ -1,0 +1,236 @@
+							
+
+
+
+				JDBC  ( JAVA DATABASE CONNECTIVITY )
+
+	WHAT IS A DATABASE ?
+
+	IT IS A REPOSITORY / CONTAINER / STOREHOUSE THAT IS USED TO
+	STORE DATA IN A STURUCTURED FORMAT ( DB SCHEMA ) TO FACILITATE
+	CRUD OPERATION BY ANY TECHNOLOGY.
+
+	IT CAN CONTAIN ROW OF RECORDS IN A TABLE AND THERE IS EVERY POSSIBILITY
+	OF RELATIONSHIPS AMONG TABLES TO ENSURE CONSISTENCY ( ACCURACY OF 	DATA ) AND DATA REDUNDANCY.
+
+
+	WHAT IS THE LANGUAGE OR MEDIUM THAT ANY RDBMS CAN UNDERSTAND ?
+		IT IS SQL ( SEKEL ) DIVIDED INTO THE FOLLOWING CATEGORIES
+
+
+			DDL ( DATA DEFINITION LANG )
+
+				CREATE / ALTER / DROP
+
+			DML ( DATA MANIPULATION LANG ) WIDELY ABUSED
+
+				INSERT / UPDATE / DELETE
+
+			DQL ( DATA QUERY OR RETRIEVAL LANG )
+
+				SELECT    --- WIDELY USED FOR REPORT 							GENERATION
+
+			DCL
+
+				REVOKE / GRANT
+
+			TCL
+
+				COMMIT / ROLLBACK
+
+
+
+
+				JDBC
+
+	IT IS A JAVA TECHNOLOGY THAT ALLOWS INTERACTION WITH ANY RDBMS
+	SEAMLESSLY ( EFFORTLESS )
+
+	JDBC IS ALL ABOUT INTERFACES ( MEANS A CONTRACT ) TO BE IMPLEMENTED
+	BY THE UNDERLYING DATABASES.
+
+	POPULAR RDBMS SUPPORTED BY JDBC ARE THE FOLLOWING :
+
+		SQL SERVER
+		ORACLE SERVER
+		MYSQL
+		POSTGRE
+		SYBASE
+		INGRES
+
+
+		
+			LIST OF DRIVERS
+
+	DB NAME       DRIVER NAME              DRIVER SOFTWARE
+
+	MYSQL        com.mysql.cj.jdbc.Driver	mysql-connector<ver>.jar
+
+	oracle       oracle.jdbc.OracleDriver    ojdbc<ver>.jar
+
+	
+
+	what is A DRIVER
+
+	IT IS A CLASS GIVEN BY THE DATABASE OWNER TO CONVERT JDBC ( JAVA COMMANDS ) TO SQL COMMANDS AND VICE VERSA.
+
+	IT HAS COMPLETE FUNCTIONALITY AND IS THE POINT OF CONTACT FOR THE 
+	JAVA APPLICATION TO PERFORM VARIOUS CRUD OPR.
+
+
+
+				JDBC
+
+			JAVA.SQL      JAVAX.SQL  ( 2 API'S )
+
+
+		LIST OF INTERFACES IN JAVA.SQL PKG
+
+			Connection
+			Statement
+			PreparedStatement
+			CallableStatement
+			ResultSet
+			ResultSetMetaData
+			DriverManager
+
+
+			List of interfaces in javax.sql
+
+				DataSource   ( DS )
+				ConnectionPoolDataSource   ( CPDS )
+
+
+
+
+		steps in developing a JDBC program
+
+
+		1. get THE CONNECTION TO THE DB SERVER
+
+
+			DM     DS      CPDS      JNDI
+
+
+		2. create a statement object that holds sql query
+
+
+
+		Statement	PreparedStatement     CallableStatement
+
+
+		3.  bind the above sql parameters, if necessary.
+
+
+		4.  fire the query and process the results.
+
+		5.  close the connection.
+		
+
+---------------------------------------------------------------------------
+
+		what is DS  ( data source )
+
+
+		it is an interface that gets the complete picture about 
+		the underlying db . ( url , username, password, port no,
+					database name, server name )
+
+
+
+		server name
+
+			location of the respective DB
+
+				localhost ( db residing on local system )
+
+				remote location ( specify the ipaddress )
+
+
+			DataSource   javax.sql
+
+
+	MySqlDataSource     OracleDataSource  
+
+
+ 
+			public interface DataSource{
+
+				setPortNo(int portNo)
+				setUserName(String username)
+				......
+				Connection getConnection()
+
+
+		}
+
+
+
+		Statement  ----   I
+
+
+		it is used for static purpose .
+		it is slow 
+
+		following is the code to create Statement type object
+
+			Statement st = conn object ref.createStatement()
+
+		following are the methods to perform diff'rent sql queries opr
+
+
+
+				for DDL
+
+				st.execute("create table .......")
+
+				for DML
+
+				st.executeUpdate("dml query ")
+
+
+				for DQL
+
+				st.executeQuery("any select query ")
+
+
+
+			PREPAREDSTATEMENT
+
+
+		IT IS USED FOR DYNAMIC PURPOSES
+
+		IT HAS IN PARAMETERS REP BY ? 
+
+		IN PARAMETERS TAKE IN VALUES GIVEN AT RUN TIME
+
+		IT IS FASTER AS IT IS PRE-COMPILED	
+--------------------------------------------------------------------------------------
+
+Resultset
+
+IT IS AN INTERFACE
+
+IT HAS SET OF ROW AND COLUMNS
+
+COLUMN DATA CAN BE EXTRACTED VIA GETTER METHODS(EITHER SPECIFY THE COLUMN NO/NAME)
+
+NOTE : RESULTSET OBJECT CAN NEVER BE NULL
+
+
+
+
+BULK UPDATES/ BATCH UPDATES
+
+EITHER ALL THE RECORDS SHOULD GET INSERTED / UPDATED OR NONE OF THEM SHOULD HAPPEN
+
+IN SHORT , EITHER SUCCESS OR FAILURE
+
+THEY ARE DONE FOR DML OPERATIONS
+
+
+USE CASE :
+
+PAYMENT -------------- TRASCTION SHOULD BE SUCCESSFUL AT BOTH THE ENDS OR IT MUST COMPLETELY FAIL
+		
+			
