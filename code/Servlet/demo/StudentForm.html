@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Register Form</title>
+    <style>
+        /* Centers the form in the middle of the screen */
+        body {
+            background-color: turquoise;
+            color: red;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            font-family: Arial, sans-serif;
+        }
+
+        /* Container for the form elements */
+        .form-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.2); /* Slight overlay for readability */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Makes inputs stack vertically and adds spacing */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; 
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 250px;
+        }
+
+        input[type="submit"] {
+            padding: 10px;
+            cursor: pointer;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        input[type="submit"]:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Student Registration</h2>
+        <form action="register" method="post">
+            <input type="text" name="stdId" placeholder="Enter ID" required />
+            <input type="text" name="stdName" placeholder="Enter Name" required />
+            <input type="submit" value="Register" />
+        </form>
+    </div>
+
+</body>
+</html>
